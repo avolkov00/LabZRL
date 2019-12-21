@@ -3,7 +3,7 @@ using namespace std;
 
 int globalValue;
 void coutValues() {
-	// Вывод адресов статической,динамической и глобальной переменной
+	// Вывод адресов глобальной,динамической и статической переменной
 	int staticValue;
 	int* dynamicValue = new int;
 	cout << &staticValue << " Static value" << '\n'
@@ -63,54 +63,51 @@ void coutMultidimensionalArrays() {
 
 struct structWithAligment1
 {
-	char ch;
-	int id;
-	short opt;
-	int value;
+	char symbol;
+	int inText1;
+	short index;
+	int inText2;
 };
 
 struct structWithAligment2
 {
-	char ch;
-	short opt;
-	int id;
-	int value;
+	char symbol;
+	short index;
+	int inText1;
+	int inText2;
 };
 
 #pragma pack(push, 1)
 struct structWithoutAligment
 {
-	char ch;
-	short opt;
-	int id;
-	int value;
+	char symbol;
+	short index;
+	int inText1;
+	int inText2;
 };
 #pragma pack(pop)
 void coutStructs() {
 	//Вывод адресов и размеров различных структур
 	structWithAligment1 withAligment1;
-	cout << &withAligment1 << " " << sizeof(withAligment1) << endl
-		<< (void*)&withAligment1.ch << " " << sizeof(withAligment1.ch) << endl
-		<< &withAligment1.id << " " << sizeof(withAligment1.id) << endl
-		<< &withAligment1.opt << " " << sizeof(withAligment1.opt) << endl
-		<< &withAligment1.value << " " << sizeof(withAligment1.value) << endl
-		<< sizeof(withAligment1.ch) + sizeof(withAligment1.id) + sizeof(withAligment1.opt) + sizeof(withAligment1.value) << " " << sizeof(withAligment1) << endl;
+	cout << (void*)&withAligment1.symbol  << endl
+		<< &withAligment1.inText1 << endl
+		<< &withAligment1.index << endl
+		<< &withAligment1.inText2 << endl
+		<< sizeof(withAligment1.symbol) + sizeof(withAligment1.inText1) + sizeof(withAligment1.index) + sizeof(withAligment1.inText2) << " " << sizeof(withAligment1) << endl;
 
 	structWithAligment2 withAligment2;
-	cout << &withAligment2 << " " << sizeof(withAligment2) << endl
-		<< (void*)&withAligment2.ch << " " << sizeof(withAligment2.ch) << endl
-		<< &withAligment2.opt << " " << sizeof(withAligment2.opt) << endl
-		<< &withAligment2.id << " " << sizeof(withAligment2.id) << endl
-		<< &withAligment2.value << " " << sizeof(withAligment2.value) << endl
-		<< sizeof(withAligment2.ch) + sizeof(withAligment2.id) + sizeof(withAligment2.opt) + sizeof(withAligment2.value) << " " << sizeof(withAligment2) << endl;
+	cout << (void*)&withAligment2.symbol << endl
+		<< &withAligment2.index  << endl
+		<< &withAligment2.inText1 << endl
+		<< &withAligment2.inText2 << endl
+		<< sizeof(withAligment2.symbol) + sizeof(withAligment2.inText1) + sizeof(withAligment2.index) + sizeof(withAligment2.inText2) << " " << sizeof(withAligment2) << endl;
 
 	structWithoutAligment withoutAligment;
-	cout << &withoutAligment << " " << sizeof(withoutAligment) << endl
-		<< (void*)&withoutAligment.ch << " " << sizeof(withoutAligment.ch) << endl
-		<< &withoutAligment.opt << " " << sizeof(withoutAligment.opt) << endl
-		<< &withoutAligment.id << " " << sizeof(withoutAligment.id) << endl
-		<< &withoutAligment.value << " " << sizeof(withoutAligment.value) << endl
-		<< sizeof(withoutAligment.ch) + sizeof(withoutAligment.id) + sizeof(withoutAligment.opt) + sizeof(withoutAligment.value) << " " << sizeof(withoutAligment) << endl;
+	cout << (void*)&withoutAligment.symbol << endl
+		<< &withoutAligment.index <<  endl
+		<< &withoutAligment.inText1  << endl
+		<< &withoutAligment.inText2 << endl
+		<< sizeof(withoutAligment.symbol) + sizeof(withoutAligment.inText1) + sizeof(withoutAligment.index) + sizeof(withoutAligment.inText2) << " " << sizeof(withoutAligment) << endl;
 
 }
 
